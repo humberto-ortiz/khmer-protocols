@@ -8,7 +8,8 @@ because that way (a) you don't need to buy a big computer, and (b)
 I don't have to figure out all the special details of your own
 computer system.
 
-This does mean that the first thing you need to do is get your data
+This does mean that the first thing you need to do is get yourself and
+your data
 over to boqueron.  I tend to just store it there in the first place,
 because...
 
@@ -19,6 +20,18 @@ The basics
 program for managing your data. Contact the helpdesk if you need
 assitance moving your data on or off boqueron.
 
+Logging in to boqueron
+-------------------
+
+To login remotely to boqueron you need an ssh client. An example is
+`putty`, a secure version of the `puttytel` program you use for
+registering courses in UPR.
+
+The HPCf website has a brief primer on `logging in to boqueron
+<https://www.hpcf.upr.edu/documentation/boqueron/#ffs-tabbed-11>`__.
+
+Using curl to copy files
+------------------
 
 You can also use ``curl`` to download files one at a time from Web or FTP sites.
 For example, to save a file from a website, you could use::
@@ -27,12 +40,11 @@ For example, to save a file from a website, you could use::
    curl -O http://path/to/file/on/website
 
 Once you have the files, figure out their size using ``du -sh`` (e.g. after the
-above, ``du -sh /mnt`` will tell you how much data you have saved under /mnt),
-and go create and attach a volume (see :doc:`../amazon/index`).
+above, ``du -sh $WORK`` will tell you how much data you have saved under /work).
 
-Any files in the '/work' directory will be lost if the filesystem
+Any files in the '/work' directory may be lost if the filesystem
 crashes. However, files stored in the '/home', directory will remain
-available and backed up.
+available and are backed up.
 
 More information on the '/home' and '/work' filesystems is available
 at `the HPCf website <https://www.hpcf.upr.edu/documentation/boqueron/#ffs-tabbed-13>`__.
@@ -57,7 +69,11 @@ Additional information
 ----------------------
 
 Throughout this protocol we will be using commandline interfaces. There
-is a short document explaining the notations used here. (see :doc:`../docs/command-line`)
+is a short document explaining the notations used here. (see
+:doc:`../docs/command-line`). The command line we use is bash, an
+interface used in UNIX and linux. As you work more in bioinformatics,
+you will eventually need to find a UNIX/linux tutorial, and perhaps a
+bash scripting tutorial.
 
 ----
 
