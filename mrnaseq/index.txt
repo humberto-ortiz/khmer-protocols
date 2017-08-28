@@ -9,7 +9,7 @@ The Eel Pond mRNAseq Protocol
 
 :author: C. Titus Brown, Camille Scott, and Leigh Sheneman.
 
-Modified for use with local resources at the University of Puerto Rico
+modified for use with local resources at the University of Puerto Rico
 by Humberto Ortiz-Zuazaga.
 
 This is a lightweight protocol for assembling up to a few hundred
@@ -43,4 +43,3 @@ The tutorial:
 Reference material
 ------------------
 :doc:`../docs/command-line`
-:doc:`../amazon/index`
