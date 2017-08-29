@@ -23,7 +23,7 @@ wrong...  STOP!! Revisit the `installation instructions
 Also, be sure you have loaded the right Python packages
 ::
 
-   source ~/pondenv/bin/activate
+   source ~/venv/bin/activate
    
 
 Build the files to assemble
