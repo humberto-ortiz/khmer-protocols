@@ -50,7 +50,7 @@ find them but doesn't need to actually move them around. :
 ::
 
    mkdir -p ${WORK}/quality
-   cd ${WORK/quality
+   cd ${WORK}/quality
    
    ln -fs ${WORK}/data/*.fastq.gz .
 
