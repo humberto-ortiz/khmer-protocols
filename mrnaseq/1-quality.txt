@@ -116,8 +116,13 @@ these are the paired ends.
 
 See excellent paper on trimming from `MacManes 2014 <http://journal.frontiersin.org/article/10.3389/fgene.2014.00013/full>`__.
 
+We will use the copy of Trimmomatic we downloaded at the beginning of
+this section. Since Trimmomatic is a java program, we load a module
+for java.
+
 Run::
 
+  module load jdk
   for filename in *_R1_*.fastq.gz
   do
     # first, make the base by removing fastq.gz
@@ -129,7 +134,7 @@ Run::
     echo $baseR2
         
    # finally, run Trimmomatic
-    TrimmomaticPE ${base}.fastq.gz ${baseR2}.fastq.gz \
+    java -jar /work/eelpondworkshop/Trimmomatic-0.36/trimmomatic-0.36.jar PE ${base}.fastq.gz ${baseR2}.fastq.gz \
       ${base}.qc.fq.gz s1_se \
       ${baseR2}.qc.fq.gz s2_se \
       ILLUMINACLIP:TruSeq3-PE.fa:2:40:15 \
@@ -141,7 +146,8 @@ Run::
     gzip -9c s1_se s2_se >> orphans.qc.fq.gz
     rm -f s1_se s2_se
   done
-
+  module unload jdk
+  
 The paired sequences output by this set of commands will be in the files ending in '.qc.fq.gz', with any orphaned sequences all together
 in 'orphans.qc.fq.gz'.
 
@@ -150,6 +156,58 @@ Make these trimmed reads read-only and keep them, as we will reuse them later.
 
   chmod u-w ${PROJECT}/quality/*.qc.fq.gz
 
+
+Interleave the sequences
+------------------------
+
+Next, we need to take these R1 and R2 sequences and convert them into
+interleaved form, for the next step.  To do this, we'll use scripts
+from the `khmer package <http://khmer.readthedocs.org>`__, which we
+installed above.
+
+Now let's use a for loop again - you might notice this is only a minor
+modification of the previous for loop...
+::
+
+   for filename in *_R1_*.qc.fq.gz
+   do
+        # first, make the base by removing .extract.fastq.gz
+        base=$(basename $filename .qc.fq.gz)
+        echo $base
+
+        # now, construct the R2 filename by replacing R1 with R2
+        baseR2=${base/_R1/_R2}
+        echo $baseR2
+
+        # construct the output filename
+        output=${base/_R1/}.pe.qc.fq.gz
+
+        (interleave-reads.py ${base}.qc.fq.gz ${baseR2}.qc.fq.gz | \
+            gzip > $output)
+   done
+
+The final product of this is now a set of files named
+``*.pe.qc.fq.gz`` that are paired-end / interleaved and quality
+filtered sequences, together with the file ``orphans.qc.fq.gz`` that
+contains orphaned sequences.
+
+Finishing up
+------------
+
+Make the end product files read-only
+::
+
+   chmod u-w *.pe.qc.fq.gz orphans.qc.fq.gz
+
+to make sure you don't accidentally delete them.
+
+Since you linked your original data files into the ``quality`` directory, you
+can now do:
+::
+
+   rm *.fastq.gz
+
+to remove them from this location; you don't need them for any future steps.
 
 
 Things to think about

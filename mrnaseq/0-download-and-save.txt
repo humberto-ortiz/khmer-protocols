@@ -52,7 +52,7 @@ at `the HPCf website <https://www.hpcf.upr.edu/documentation/boqueron/#ffs-tabbe
 Some test data
 --------------
 
-To get started with multfile analysis and assembly, I've provided some
+To get started with multi-file analysis and assembly, I've provided some
 test mRNAseq data from embryonic stages of *Nematostella vectensis*;
 the source is `this excellent paper
 <http://www.evodevojournal.com/content/4/1/16>`__ by Tulin et al., "A
