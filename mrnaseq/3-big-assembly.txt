@@ -55,17 +55,34 @@ seqs to one of 'em. :
 Assembling with Trinity
 -----------------------
 
-Run the assembler!
+Run the assembler! You should prepare a slurm script to run the
+assembly on the cluster.  I saved this file as 'assemble.sh'. See the
+documentation on `running jobs on boqueron
+<https://www.hpcf.upr.edu/documentation/boqueron/#ffs-tabbed-12>`__.
 ::
 
-    Trinity --left left.fq \
-     --right right.fq --seqType fq --max_memory 14G \
-     --CPU 2
-
+  #!/bin/bash
+  #SBATCH --mem-per-cpu=7000
+  #SBATCH --time=5:00:00
+  #SBATCH --job-name=Trinity
+  #SBATCH --mail-user=humberto.ortiz@upr.edu
+  #SBATCH --mail-type=ALL
+  #SBATCH --workdir=/work/eelpondworkshop/humberto/assembly
+  #SBATCH --ntasks=1
+  #SBATCH --cpus-per-task=2
+  
+  /work/eelpondworkshop/trinityrnaseq-Trinity-v2.4.0/Trinity --no_bowtie --left left.fq \
+   --right right.fq --seqType fq --max_memory 14G \
+   --CPU 2
+ 
 Note that these last two parts (``--max_memory 14G --CPU 2``)
 configure the maximum amount of memory and CPUs to
 use.  You can increase (or decrease) them based on what machines you
 are running on.
+
+To submit and run this script, use the 'sbatch' command::
+
+  sbatch assemble.sh
 
 Once this completes, you'll have an assembled transcriptome in
 ``${PROJECT}/assembly/trinity_out_dir/Trinity.fasta``.
