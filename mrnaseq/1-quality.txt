@@ -7,12 +7,6 @@ Login to boqueron, and let's set up some software.
 Install software
 ----------------
 
-Trimmomatic, read trimming tool (`homepage <http://www.usadellab.org/cms/?page=trimmomatic>`__)::
-
-  cd $HOME
-  curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
-  unzip Trimmomatic-0.36.zip
-
 Install `khmer <http://khmer.readthedocs.org>`_. We can use
 Python's pip command ::
 
@@ -116,13 +110,18 @@ these are the paired ends.
 
 See excellent paper on trimming from `MacManes 2014 <http://journal.frontiersin.org/article/10.3389/fgene.2014.00013/full>`__.
 
-We will use the copy of Trimmomatic we downloaded at the beginning of
-this section. Since Trimmomatic is a java program, we load a module
+We will use the copy of Trimmomatic, read trimming tool (`homepage <http://www.usadellab.org/cms/?page=trimmomatic>`__).
+Since Trimmomatic is a java program, we load a module
 for java.
 
 Run::
 
+  # Load a newer java version
   module load jdk
+  
+  # Delete any old orphan reads
+  rm -f orphans.qc.fq.gz
+  
   for filename in *_R1_*.fastq.gz
   do
     # first, make the base by removing fastq.gz
@@ -146,7 +145,6 @@ Run::
     gzip -9c s1_se s2_se >> orphans.qc.fq.gz
     rm -f s1_se s2_se
   done
-  module unload jdk
   
 The paired sequences output by this set of commands will be in the files ending in '.qc.fq.gz', with any orphaned sequences all together
 in 'orphans.qc.fq.gz'.
