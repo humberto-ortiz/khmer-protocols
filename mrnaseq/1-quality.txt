@@ -12,6 +12,7 @@ Python's pip command ::
 
    cd ${HOME}
    module load python2
+   pip install --user virtualenv
    python2.7 -m virtualenv venv
    source ${HOME}/venv/bin/activate
    pip install khmer
