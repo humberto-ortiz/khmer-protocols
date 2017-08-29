@@ -73,7 +73,7 @@ is a short document explaining the notations used here. (see
 :doc:`../docs/command-line`). The command line we use is bash, an
 interface used in UNIX and linux. As you work more in bioinformatics,
 you will eventually need to find a UNIX/linux tutorial, and perhaps a
-bash scripting tutorial.
+bash scripting tutorial. The HPCf has a very `brief linux primer <https://www.hpcf.upr.edu/documentation/linux-primer/>`__.
 
 ----
 
