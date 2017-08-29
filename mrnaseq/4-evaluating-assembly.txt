@@ -39,9 +39,8 @@ Transrate doesn't like pipes in sequence names. This version of Trinity doesn't 
 
    sed 's_|_-_g' ${PROJECT}/assembly/trinity_out_dir/Trinity.fasta > Trinity.fixed.fasta
   
-Now, run the actual command:
+Now, run the actual command::
 
-::
    module load transrate
    
    transrate --assembly=Trinity.fixed.fasta --threads=2 \
