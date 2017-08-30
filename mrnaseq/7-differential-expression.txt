@@ -1,13 +1,28 @@
 7. Extracting differentially expressed genes with edgeR
 =======================================================
 
+To set up R
+========
+
+We will install one package manually, so R knows where to install some
+more::
+
+  module load R
+  R
+  install.packages("sp")
+  y
+  y
+  57
+  q()
+  n
+
 Run this `edgeR <https://bioconductor.org/packages/release/bioc/html/edgeR.html>`__ script (`nema.salmon.R
 <https://raw.githubusercontent.com/dib-lab/eel-pond/DE/nema.salmon.R>`__)
 that loads all this. For more information, see the `edgeR manual <http://www.bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf>`__
 
 ::
 
-   curl -O -L https://raw.githubusercontent.com/dib-lab/eel-pond/DE/nema.salmon.R
+   curl -O -L https://raw.githubusercontent.com/humberto-ortiz/khmer-protocols/escambron/mrnaseq/nema.salmon.R
    Rscript nema.salmon.R
 
 These will produce two plots, nema-edgeR-MDS.pdf and nema-edgeR-MA-plot.pdf.
