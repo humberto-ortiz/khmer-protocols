@@ -71,21 +71,20 @@ This will create a bunch of directories named something like
 look at what files there are:
 ::
 
-    find 0Hour_ATCACG_L002_R1_001* -type f
+    find 0Hour_ATCACG_L002_R1_001.quant -type f
 
 You should see::
 
-    0Hour_ATCACG_L002_R1_001.extract.quant/quant.sf
-    0Hour_ATCACG_L002_R1_001.extract.quant/aux_info/observed_bias.gz
-    0Hour_ATCACG_L002_R1_001.extract.quant/aux_info/observed_bias_3p.gz
-    0Hour_ATCACG_L002_R1_001.extract.quant/aux_info/fld.gz
-    0Hour_ATCACG_L002_R1_001.extract.quant/aux_info/expected_bias.gz
-    0Hour_ATCACG_L002_R1_001.extract.quant/aux_info/meta_info.json
-    0Hour_ATCACG_L002_R1_001.extract.quant/cmd_info.json
-    0Hour_ATCACG_L002_R1_001.extract.quant/logs/salmon_quant.log
-    0Hour_ATCACG_L002_R1_001.extract.quant/libParams/flenDist.txt
-    0Hour_ATCACG_L002_R1_001.extract.quant/lib_format_counts.json
-    0Hour_ATCACG_L002_R1_001.extract.quant.counts
+    0Hour_ATCACG_L002_R1_001.quant/quant.sf
+    0Hour_ATCACG_L002_R1_001.quant/aux_info/observed_bias.gz
+    0Hour_ATCACG_L002_R1_001.quant/aux_info/observed_bias_3p.gz
+    0Hour_ATCACG_L002_R1_001.quant/aux_info/fld.gz
+    0Hour_ATCACG_L002_R1_001.quant/aux_info/expected_bias.gz
+    0Hour_ATCACG_L002_R1_001.quant/aux_info/meta_info.json
+    0Hour_ATCACG_L002_R1_001.quant/cmd_info.json
+    0Hour_ATCACG_L002_R1_001.quant/logs/salmon_quant.log
+    0Hour_ATCACG_L002_R1_001.quant/libParams/flenDist.txt
+    0Hour_ATCACG_L002_R1_001.quant/lib_format_counts.json
 
 The two most interesting files are ``salmon_quant.log`` and
 ``quant.sf``. The latter contains the counts; the former contains the
@@ -97,7 +96,7 @@ Working with the counts
 The ``quant.sf`` files actually contain the relevant information about
 expression -- take a look::
 
-   head -20 0Hour_ATCACG_L002_R1_001.extract.quant/quant.sf
+   head -20 0Hour_ATCACG_L002_R1_001.quant/quant.sf
 
 The first column contains the transcript names, and the
 fifth column is what edgeR etc will want - the "raw counts".
