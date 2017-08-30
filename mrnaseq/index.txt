@@ -33,12 +33,7 @@ The tutorial:
    2-diginorm
    3-big-assembly
    4-evaluating-assembly
-   installing-blastkit
-
-   5-building-transcript-families
-   6-annotating-transcript-families
-   7-expression-analysis
-   8-differential-expression
+   6-expression
 
 Reference material
 ------------------
