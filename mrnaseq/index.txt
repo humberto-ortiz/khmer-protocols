@@ -34,6 +34,7 @@ The tutorial:
    3-big-assembly
    4-evaluating-assembly
    6-expression
+   7-differential-expression
 
 Reference material
 ------------------
